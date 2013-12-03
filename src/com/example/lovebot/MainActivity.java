@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 
-		// setTitle("Test");
+		setTitle("Nouveau Titre");
 		//getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
 		//R.layout.title);
 		return true;
