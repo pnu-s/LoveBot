@@ -18,8 +18,8 @@ public class MainActivity extends Activity {
 	    getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,R.drawable.ic_launcher);
 		View v = findViewById(android.R.id.title);
 		v.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				afficherAuthors(v);
+			public void onClick(View v2) {
+				afficherAuthors(v2);
 			}
 		});
 	}
