@@ -1,18 +1,24 @@
 package com.example.lovebot;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		final Button btnConnexion = (Button) findViewById(R.id.buttonCo);
+		
 	    requestWindowFeature(Window.FEATURE_LEFT_ICON);
 		setContentView(R.layout.activity_main);
 	    getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,R.drawable.ic_launcher);
@@ -20,6 +26,19 @@ public class MainActivity extends Activity {
 		v.setOnClickListener(new OnClickListener() {
 			public void onClick(View v2) {
 				afficherAuthors(v2);
+			}
+		});
+		
+		btnConnexion.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FragmentManager fragmentManager = getFragmentManager();
+				FragmentTransaction fragmentTransaction = fragmentManager
+						.beginTransaction();
+				FragmentInscription Inscription = new FragmentInscription();
+				fragmentTransaction.replace(R.id.fragmentContainer, Inscription, "HELLO");
+				fragmentTransaction.commit();
+
 			}
 		});
 	}
@@ -39,5 +58,7 @@ public class MainActivity extends Activity {
 		new AlertDialog.Builder(this).setTitle("Auteurs")
 				.setMessage("S. Pruneau & H. Burlini").show();
 	}
+	
+	
 
 }
