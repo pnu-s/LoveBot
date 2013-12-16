@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		final Button btnConnexion = (Button) findViewById(R.id.buttonCo);
+		final Button btnInscription = (Button) findViewById(R.id.buttonInscription);
 		
 	    requestWindowFeature(Window.FEATURE_LEFT_ICON);
 		setContentView(R.layout.activity_main);
@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		btnConnexion.setOnClickListener(new View.OnClickListener() {
+		btnInscription.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				FragmentManager fragmentManager = getFragmentManager();
