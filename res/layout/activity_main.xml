@@ -4,14 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/fragment_login" />
-
     <LinearLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
     </LinearLayout>
-  
 
 </LinearLayout>

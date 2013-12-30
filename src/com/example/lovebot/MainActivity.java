@@ -16,51 +16,25 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.activity_main);
-		
-		final Button btnInscription = (Button) findViewById(R.id.buttonInscription);
-		
-		//requestWindowFeature(Window.FEATURE_LEFT_ICON);
-		
-		/*getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
-				R.drawable.ic_launcher);
 
-		View v = findViewById(android.R.id.title);
-		v.setOnClickListener(new OnClickListener() {
-			public void onClick(View v2) {
-				afficherAuthors(v2);
-			}
-		});*/
-		
-		btnInscription.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				FragmentManager fm = getFragmentManager();
-				FragmentTransaction ft = fm.beginTransaction();
-				FragmentInscription fi = new FragmentInscription();
-				ft.replace(R.id.fragmentContainer, fi);
-				ft.commit();
-				/*FragmentManager fragmentManager = getFragmentManager();
-				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-				FragmentInscription Inscription = new FragmentInscription();
-				fragmentTransaction.replace(R.id.fragmentContainer, Inscription, "HELLO");
-				fragmentTransaction.commit();*/
-				
-			}
-		});
+		FragmentManager fm = getFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		FragmentLogin fl = new FragmentLogin();
+		ft.replace(R.id.fragmentContainer, fl);
+		ft.commit();
 
-		final Button contactsButton = (Button) findViewById(R.id.buttonCo);
-		
-		contactsButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this,
-						ContactsActivity.class);
-				startActivity(intent);
-			}
-		});
-		
-	
+		// requestWindowFeature(Window.FEATURE_LEFT_ICON);
+
+		/*
+		 * getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
+		 * R.drawable.ic_launcher);
+		 * 
+		 * View v = findViewById(android.R.id.title); v.setOnClickListener(new
+		 * OnClickListener() { public void onClick(View v2) {
+		 * afficherAuthors(v2); } });
+		 */
+
 	}
 
 	@Override
@@ -74,7 +48,5 @@ public class MainActivity extends Activity {
 		new AlertDialog.Builder(this).setTitle("Auteurs")
 				.setMessage("S. Pruneau & H. Burlini").show();
 	}
-	
-	
 
 }

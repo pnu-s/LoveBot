@@ -32,6 +32,10 @@
             android:name="com.example.lovebot.ContactsActivity"
             android:label="@string/title_activity_contacts" >
         </activity>
+        <activity
+            android:name="com.example.lovebot.FragmentLogin"
+            android:label="@string/title_activity_fragment_login" >
+        </activity>
     </application>
 
 </manifest>
