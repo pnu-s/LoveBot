@@ -17,10 +17,12 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		setContentView(R.layout.activity_main);
+		
 		final Button btnInscription = (Button) findViewById(R.id.buttonInscription);
 		
 		//requestWindowFeature(Window.FEATURE_LEFT_ICON);
-		setContentView(R.layout.activity_main);
+		
 		/*getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
 				R.drawable.ic_launcher);
 
@@ -30,8 +32,26 @@ public class MainActivity extends Activity {
 				afficherAuthors(v2);
 			}
 		});*/
+		
+		btnInscription.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FragmentManager fm = getFragmentManager();
+				FragmentTransaction ft = fm.beginTransaction();
+				FragmentInscription fi = new FragmentInscription();
+				ft.replace(R.id.fragmentContainer, fi);
+				ft.commit();
+				/*FragmentManager fragmentManager = getFragmentManager();
+				FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+				FragmentInscription Inscription = new FragmentInscription();
+				fragmentTransaction.replace(R.id.fragmentContainer, Inscription, "HELLO");
+				fragmentTransaction.commit();*/
+				
+			}
+		});
 
 		final Button contactsButton = (Button) findViewById(R.id.buttonCo);
+		
 		contactsButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this,
@@ -40,18 +60,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		btnInscription.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				FragmentManager fragmentManager = getFragmentManager();
-				FragmentTransaction fragmentTransaction = fragmentManager
-						.beginTransaction();
-				FragmentInscription Inscription = new FragmentInscription();
-				fragmentTransaction.replace(R.id.fragmentContainer, Inscription, "HELLO");
-				fragmentTransaction.commit();
-
-			}
-		});
+	
 	}
 
 	@Override

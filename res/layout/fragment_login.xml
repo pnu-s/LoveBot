@@ -50,10 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="84dp"
         android:onClick="connexion"
-        android:text="Connectez-vous"
-        android:width="130dp" />
+        android:text="Connectez-vous" />
 
      <Button
          android:id="@+id/buttonInscription"
@@ -64,7 +64,6 @@
          android:layout_marginLeft="19dp"
          android:layout_toRightOf="@+id/buttonCo"
          android:onClick="inscription"
-         android:text="Inscrivez-vous"
-         android:width="130dp" />
+         android:text="Inscrivez-vous" />
 
 </RelativeLayout>

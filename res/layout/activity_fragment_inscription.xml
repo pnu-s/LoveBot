@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Numéro de Téléphone"
+        android:text="Numéro de Téléphone pour inscription"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
