@@ -19,31 +19,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/login_co"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:ems="10" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/textView2"
-        android:ems="10"
-        android:inputType="textPassword" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="37dp"
-        android:text="Mot de passe"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/buttonInscription"
@@ -59,11 +40,32 @@
         android:id="@+id/buttonCo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText2"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="95dp"
+        android:layout_alignLeft="@+id/login_co"
+        android:layout_below="@+id/login_co"
+        android:layout_marginTop="130dp"
         android:onClick="connexion"
         android:text="Connexion" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_co"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="Mot de passe"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/passwd_co"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPassword" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
