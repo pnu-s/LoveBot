@@ -52,109 +52,50 @@ public class FragmentLogin extends Fragment {
 				FragmentInscription fi = new FragmentInscription();
 				ft.replace(R.id.fragmentContainer, fi);
 				ft.commit();
-				
+
 			}
 		});
 
-		final Button contactsButton = (Button) v.findViewById(R.id.buttonCo);
-
+		final Button contactsButton = (Button) v
+				.findViewById(R.id.buttonCo);
+		
 		contactsButton.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
-				//on récupere les infos entrées et on cast en String (je pense que le Nullpointer exception vient de là). 
-				String num=((EditText) v.findViewById(R.id.login_co)).getText().toString();
-			    String passwd=((EditText) v.findViewById(R.id.passwd_co)).getText().toString();
-			    //on appelle LoginService
+				
+				// on récupere les infos entrées et on cast en String
+				String num = ((EditText) getView().findViewById(R.id.login_co)).getText().toString();
+				String passwd = ((EditText) getView().findViewById(R.id.passwd_co)).getText().toString();
+				
+				// on appelle LoginService
 				LoginService loginService = new LoginService();
-				 try
-			        {
-					 //on recupere le token
-			            String token = loginService.execute(num, passwd).get();
-			            if(token != null)
-			            {
-			            	//si il y en a un on va dans l'activité contacts
-			            	Intent intent = new Intent(getActivity(),
-			                ContactsActivity.class);
-			                startActivity(intent);
-			            }
-			        }
-				 catch(InterruptedException interruptedException)
-			        {
-					 Log.e("log_tag", "interrupted " + interruptedException.toString());
-			        }
-			        catch(ExecutionException executionException)
-			        {
-			        	Log.e("log_tag", "execution" + executionException.toString());
-			        }
-			        catch(NullPointerException nullPointerException)
-			        {
-			        	Log.e("log_tag", "nullpointer " + nullPointerException.toString());
-			        }
-				/*ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-                //postParameters.add(new BasicNameValuePair("username", num.getText().toString()));
-                postParameters.add(new BasicNameValuePair("password", passwd.getText().toString()));
-                InputStream is = null;
-                String resulta = "";
-                final String strURL = "http://lovebot.byethost17.com/index.php";
-
-                try{
-                	            HttpClient httpclient = new DefaultHttpClient();
-                	            HttpPost httppost = new HttpPost(strURL);
-                	            httppost.setEntity(new UrlEncodedFormEntity(postParameters));
-                	            HttpResponse response = httpclient.execute(httppost);
-                	            HttpEntity entity = response.getEntity();
-                	            is = entity.getContent();
-                	 
-                	        }catch(Exception e){
-                	            Log.e("log_tag", "Error in http connection " + e.toString());
-                	        }
-                	 
-               if (is !=null) { 	        // Convertion de la requête en string
-   	            Intent intent = new Intent(getActivity(),
-                        ContactsActivity.class);
-                       	startActivity(intent);
-               }
-            	/*   try{
-                	            StringBuilder sb = new StringBuilder();
-                	            String line = null;
-                	            while ((line = reader.readLine()) != null) {
-                	                sb.append(line + "\n");
-                	            }
-                	            is.close();
-                	            Intent intent = new Intent(getActivity(),
-                                ContactsActivity.class);
-                               	startActivity(intent);
-                	           
-                	        }catch(Exception e){
-                	            Log.e("log_tag", "Error converting result " + e.toString());
-                	        }
-                	        // Parse les données JSON
-                	        /*try{
-                	            JSONArray jArray = new JSONArray(result);
-                	            
-                	        }catch(JSONException e){
-                	            Log.e("log_tag", "Error parsing data " + e.toString());
-                	        }*/
-                	/*
-                	        return returnString;
-
-                String response = null;
-                try {
-                    response = CustomHttpClient.executeHttpPost("<target page url>", postParameters);
-                    String res=response.toString();
-                    res= res.replaceAll("\\s+","");
-                    if(res.equals("1")) {
-                    	Intent intent = new Intent(getActivity(),
-                         ContactsActivity.class);
-        				startActivity(intent);
-                    }
-                } catch (Exception e) {
-                    num.setText(e.toString());
-                }
-*/
+				try {
+					// on recupere le token synonyme de bonne connexion
+					String token = loginService.execute(num, passwd).get();
+					if (token != null) {
+						// si il y en a un on va dans l'activité contacts
+						Intent intent = new Intent(getActivity(),
+								ContactsActivity.class);
+						startActivity(intent);
+					}
+					else{
+						new AlertDialog.Builder(getActivity())
+						.setTitle("Erreur")
+						.setMessage("Erreur dans le num / mdp").show();
+					}
+				} catch (InterruptedException interruptedException) {
+					Log.e("log_tag",
+							"interrupted " + interruptedException.toString());
+				} catch (ExecutionException executionException) {
+					Log.e("log_tag",
+							"execution" + executionException.toString());
+				} catch (NullPointerException nullPointerException) {
+					Log.e("log_tag",
+							"nullpointer " + nullPointerException.toString());
+				}
 			}
 		});
 
 		return v;
 	}
 }
-
