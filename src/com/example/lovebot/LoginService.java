@@ -26,7 +26,7 @@ public class LoginService extends AsyncTask<String, Void, String>
         String password = params[1];
         
         //uri en clair
-        String uri = "http://lovebot.byethost17.com/index.php";
+        String uri = "http://lovebot.byethost17.com/login.php";
         
         // Query string
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
