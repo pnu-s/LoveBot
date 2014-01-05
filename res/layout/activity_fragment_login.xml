@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:ems="10" />
+        android:ems="10" >
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/buttonInscription"
@@ -63,9 +65,6 @@
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="textPassword" >
-
-        <requestFocus />
-    </EditText>
+        android:inputType="textPassword" />
 
 </RelativeLayout>
