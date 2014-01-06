@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Numéro de Téléphone pour inscription"
+        android:text="Numéro de Téléphone"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -49,11 +49,20 @@
          android:id="@+id/buttonIscriptionCo"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
+         android:layout_alignRight="@+id/editText1"
          android:layout_below="@+id/editText2"
-         android:layout_centerHorizontal="true"
-         android:layout_marginTop="51dp"
+         android:layout_marginTop="53dp"
          android:onClick="inscription"
          android:text="Inscrivez-vous"
          android:width="130dp" />
+
+     <Button
+         android:id="@+id/buttonRetour"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/buttonIscriptionCo"
+         android:layout_alignBottom="@+id/buttonIscriptionCo"
+         android:layout_alignLeft="@+id/editText2"
+         android:text="Retour" />
 
 </RelativeLayout>

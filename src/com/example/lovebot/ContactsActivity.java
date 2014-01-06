@@ -2,14 +2,12 @@ package com.example.lovebot;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -27,6 +25,9 @@ public class ContactsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacts);
 
+		Intent intent = getIntent();
+		final String number = intent.getStringExtra("key");
+		
 		final ImageView coeur = (ImageView) findViewById(R.id.imageView1);
 		coeur.setOnClickListener(new OnClickListener() {
 			@Override
@@ -36,13 +37,6 @@ public class ContactsActivity extends Activity {
 						.setPositiveButton("Ok", null).show();
 			}
 		});
-
-		TelephonyManager mTelephonyMgr;
-		mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-		final String yourNumber = mTelephonyMgr.getLine1Number();
-		// new
-		// AlertDialog.Builder(this).setTitle("Amour OK").setMessage("Reussi! "
-		// + yourNumber).show();
 
 		final ListView lv = (ListView) findViewById(R.id.listView1);
 		final ArrayList<String> list = new ArrayList<String>();
@@ -76,9 +70,12 @@ public class ContactsActivity extends Activity {
 				 * lv.getItemAtPosition(position) + " and "+ id);
 				 * adb.setPositiveButton("Ok", null); adb.show();
 				 */
-				String user1 = yourNumber;
+				String user1 = number;
 				String[] user2 = lv.getItemAtPosition(position).toString()
 						.split("\\|");
+
+				user2[1] = user2[1].replace("+33", "").replace(" ", "")
+						.replace(".", "");
 
 				// on appelle inscriptionService
 				AmourService amourService = new AmourService();

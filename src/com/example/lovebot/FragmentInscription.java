@@ -24,6 +24,21 @@ public class FragmentInscription extends Fragment {
 
 		View v = inflater.inflate(R.layout.activity_fragment_inscription,
 				container, false);
+		
+		final Button btnRetour = (Button) v
+				.findViewById(R.id.buttonRetour);
+
+		btnRetour.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FragmentManager fm = getFragmentManager();
+				FragmentTransaction ft = fm.beginTransaction();
+				FragmentLogin fi = new FragmentLogin();
+				ft.replace(R.id.fragmentContainer, fi);
+				ft.commit();
+
+			}
+		});
 
 		final Button inscriptionButton = (Button) v
 				.findViewById(R.id.buttonIscriptionCo);

@@ -58,6 +58,7 @@ public class FragmentLogin extends Fragment {
 						// si il y en a un on va dans l'activité contacts
 						Intent intent = new Intent(getActivity(),
 								ContactsActivity.class);
+						intent.putExtra("key", token);
 						startActivity(intent);
 					}
 					else{
