@@ -26,20 +26,23 @@ public class ContactsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacts);
-		
+
 		final ImageView coeur = (ImageView) findViewById(R.id.imageView1);
 		coeur.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				new AlertDialog.Builder(v.getContext()).setTitle("Auteurs")
-				.setMessage("S. Pruneau & H. Burlini").show();
+						.setMessage("S. Pruneau & H. Burlini")
+						.setPositiveButton("Ok", null).show();
 			}
 		});
 
-		TelephonyManager mTelephonyMgr;  
+		TelephonyManager mTelephonyMgr;
 		mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-		final String yourNumber = mTelephonyMgr.getLine1Number();  
-		//new AlertDialog.Builder(this).setTitle("Amour OK").setMessage("Reussi! " + yourNumber).show();
+		final String yourNumber = mTelephonyMgr.getLine1Number();
+		// new
+		// AlertDialog.Builder(this).setTitle("Amour OK").setMessage("Reussi! "
+		// + yourNumber).show();
 
 		final ListView lv = (ListView) findViewById(R.id.listView1);
 		final ArrayList<String> list = new ArrayList<String>();
@@ -74,7 +77,8 @@ public class ContactsActivity extends Activity {
 				 * adb.setPositiveButton("Ok", null); adb.show();
 				 */
 				String user1 = yourNumber;
-				String[] user2 = lv.getItemAtPosition(position).toString().split("\\|");
+				String[] user2 = lv.getItemAtPosition(position).toString()
+						.split("\\|");
 
 				// on appelle inscriptionService
 				AmourService amourService = new AmourService();
@@ -88,7 +92,9 @@ public class ContactsActivity extends Activity {
 					} else {
 						new AlertDialog.Builder(v.getContext())
 								.setTitle("Erreur")
-								.setMessage("Erreur :" + token + ": fz "+user2[1]).show();
+								.setMessage(
+										"Erreur :" + token + ": fz " + user2[1])
+								.show();
 					}
 				} catch (InterruptedException interruptedException) {
 					Log.e("log_tag",

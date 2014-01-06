@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				new AlertDialog.Builder(v.getContext()).setTitle("Auteurs")
-				.setMessage("S. Pruneau & H. Burlini").show();
+				.setMessage("S. Pruneau & H. Burlini").setPositiveButton("Ok", null).show();
 			}
 		});
 		
