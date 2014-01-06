@@ -2,6 +2,7 @@ package com.example.lovebot;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.app.Activity;
@@ -12,9 +13,11 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class ContactsActivity extends Activity {
@@ -23,6 +26,15 @@ public class ContactsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacts);
+		
+		final ImageView coeur = (ImageView) findViewById(R.id.imageView1);
+		coeur.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new AlertDialog.Builder(v.getContext()).setTitle("Auteurs")
+				.setMessage("S. Pruneau & H. Burlini").show();
+			}
+		});
 
 		TelephonyManager mTelephonyMgr;  
 		mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);

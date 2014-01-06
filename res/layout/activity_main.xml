@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <include layout="@layout/title" />
+
     <LinearLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="464dp"
         android:orientation="vertical" >
     </LinearLayout>
 
