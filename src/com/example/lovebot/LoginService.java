@@ -3,6 +3,7 @@ package com.example.lovebot;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -14,7 +15,9 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class LoginService extends AsyncTask<String, Void, String>
 {
@@ -48,14 +51,18 @@ public class LoginService extends AsyncTask<String, Void, String>
         }
         catch(JSONException jsonException)
         {
+        	Log.e("log_tag",
+					"jSONException " + jsonException.toString());
         }
         catch(ClientProtocolException clientProtocolException)
         {
-
+        	Log.e("log_tag",
+					"ClientProtocolException " + clientProtocolException.toString());
         }
         catch(IOException ioException)
         {
-
+        	Log.e("log_tag",
+					"IOException " + ioException.toString());
         }
         return null;
     }
