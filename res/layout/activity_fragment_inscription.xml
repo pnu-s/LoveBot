@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+   
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -24,26 +25,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:ems="10" />
+        android:ems="10" >
+        <requestFocus />
+    </EditText>
+    
+     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="Mot de passe"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
         android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textPassword" />
+    
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="37dp"
-        android:text="Mot de passe"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
      <Button
          android:id="@+id/buttonIscriptionCo"
@@ -56,13 +61,23 @@
          android:text="Inscrivez-vous"
          android:width="130dp" />
 
-     <Button
+     <ImageButton
          android:id="@+id/buttonRetour"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_alignBaseline="@+id/buttonIscriptionCo"
-         android:layout_alignBottom="@+id/buttonIscriptionCo"
          android:layout_alignLeft="@+id/editText2"
-         android:text="Retour" />
+         android:layout_alignTop="@+id/buttonIscriptionCo"
+         android:src="@android:drawable/ic_menu_revert" />
+
+     <TextView
+         android:id="@+id/textMdP"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/buttonIscriptionCo"
+         android:layout_marginTop="30dp"
+         android:layout_centerHorizontal="true"
+         android:gravity="center_horizontal"
+         android:text="Mot de passe de 5 caractères minimum dont au moins 1 lettre et 1 chiffre"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

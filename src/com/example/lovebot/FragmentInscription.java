@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class FragmentInscription extends Fragment {
 
@@ -25,7 +26,7 @@ public class FragmentInscription extends Fragment {
 		View v = inflater.inflate(R.layout.activity_fragment_inscription,
 				container, false);
 		
-		final Button btnRetour = (Button) v
+		final ImageButton btnRetour = (ImageButton) v
 				.findViewById(R.id.buttonRetour);
 
 		btnRetour.setOnClickListener(new OnClickListener() {

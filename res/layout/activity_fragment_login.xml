@@ -27,28 +27,8 @@
         android:ems="10" >
         <requestFocus />
     </EditText>
-
-    <Button
-        android:id="@+id/buttonInscription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/buttonCo"
-        android:layout_marginLeft="17dp"
-        android:layout_toRightOf="@+id/buttonCo"
-        android:onClick="inscription"
-        android:text="Inscription" />
-
-    <Button
-        android:id="@+id/buttonCo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/login_co"
-        android:layout_below="@+id/login_co"
-        android:layout_marginTop="130dp"
-        android:onClick="connexion"
-        android:text="Connexion" />
-
-    <TextView
+    
+     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,5 +46,37 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textPassword" />
+
+    
+     <TextView
+        android:id="@+id/textInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonCo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="Pas encore inscrit ?"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <Button
+        android:id="@+id/buttonInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/textInscription"
+        android:layout_marginLeft="17dp"
+		android:layout_centerHorizontal="true"
+        android:onClick="inscription"
+        android:text="Inscription" />
+
+    <Button
+        android:id="@+id/buttonCo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login_co"
+        android:layout_alignRight="@+id/login_co"
+        android:layout_below="@+id/login_co"
+        android:layout_marginTop="130dp"
+        android:onClick="connexion"
+        android:text="Connexion" />
 
 </RelativeLayout>

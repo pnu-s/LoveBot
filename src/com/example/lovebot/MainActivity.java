@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
 
@@ -18,9 +19,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		final ImageView coeur = (ImageView) findViewById(R.id.imageView1);
-		coeur.setOnClickListener(new OnClickListener() {
+		final LinearLayout title = (LinearLayout) findViewById(R.id.title);
+		//final ImageView coeur = (ImageView) findViewById(R.id.imageView1);
+		title.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				new AlertDialog.Builder(v.getContext()).setTitle("Auteurs")
