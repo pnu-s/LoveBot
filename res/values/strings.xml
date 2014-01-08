@@ -7,5 +7,6 @@
     <string name="title_activity_fragment_inscription">FragmentInscription</string>
     <string name="title_activity_contacts">ContactsActivity</string>
     <string name="title_activity_fragment_login">FragmentLogin</string>
+    <string name="title_activity_success">SuccessActivity</string>
 
 </resources>

@@ -55,11 +55,15 @@ public class FragmentLogin extends Fragment {
 				try {
 					// on recupere le token synonyme de bonne connexion
 					String token = loginService.execute(num, passwd).get();
-					if (token != null) {
+					if (token != null && token != "1") {
 						// si il y en a un on va dans l'activité contacts
 						Intent intent = new Intent(getActivity(),
 								ContactsActivity.class);
 						intent.putExtra("key", token);
+						startActivity(intent);
+					} else if (token == "1") {
+						Intent intent = new Intent(getActivity(),
+								SuccessActivity.class);
 						startActivity(intent);
 					} else {
 						new AlertDialog.Builder(getActivity()).setMessage(
