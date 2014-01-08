@@ -49,22 +49,22 @@ public class FragmentLogin extends Fragment {
 						.getText().toString();
 				String passwd = ((EditText) getView().findViewById(
 						R.id.passwd_co)).getText().toString();
-
 				// on appelle LoginService
 				LoginService loginService = new LoginService();
 				try {
 					// on recupere le token synonyme de bonne connexion
-					String token = loginService.execute(num, passwd).get();
-					if (token != null && token != "1") {
+					
+					String token = (String) loginService.execute(num, passwd).get();					
+					if (token != null && !token.equals("1")) {
 						// si il y en a un on va dans l'activité contacts
 						Intent intent = new Intent(getActivity(),
 								ContactsActivity.class);
 						intent.putExtra("key", token);
 						startActivity(intent);
-					} else if (token == "1") {
-						Intent intent = new Intent(getActivity(),
+					} else if (token.equals("1")) {
+						Intent intent2 = new Intent(getActivity(),
 								SuccessActivity.class);
-						startActivity(intent);
+						startActivity(intent2);
 					} else {
 						new AlertDialog.Builder(getActivity()).setMessage(
 								"Identifiants incorrects.").show();
