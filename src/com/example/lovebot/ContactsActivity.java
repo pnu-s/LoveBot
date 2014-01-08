@@ -63,36 +63,27 @@ public class ContactsActivity extends Activity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View v, int position,
 					long id) {
-				/*
-				 * AlertDialog.Builder adb = new AlertDialog.Builder(lv
-				 * .getContext()); adb.setTitle("ListView OnClick");
-				 * adb.setMessage("Selected Item is = " +
-				 * lv.getItemAtPosition(position) + " and "+ id);
-				 * adb.setPositiveButton("Ok", null); adb.show();
-				 */
 				String user1 = number;
 				String[] user2 = lv.getItemAtPosition(position).toString()
 						.split("\\|");
 
 				user2[1] = user2[1].replace("+33", "").replace(" ", "")
-						.replace(".", "");
+						.replace(".", "").replace("-","");
 
-				// on appelle inscriptionService
+				// on appelle amourService
 				AmourService amourService = new AmourService();
 				try {
 					// on recupere le token synonyme de liaison réussie
 					String token = amourService.execute(user1, user2[1]).get();
+					AlertDialog.Builder adb = new AlertDialog.Builder(v.getContext());
+					
 					if (token != null) {
-						new AlertDialog.Builder(v.getContext())
-								.setTitle("Amour OK")
-								.setMessage("Reussi! " + token).show();
+						adb.setMessage(token);
 					} else {
-						new AlertDialog.Builder(v.getContext())
-								.setTitle("Erreur")
-								.setMessage(
-										"Erreur :" + token + ": fz " + user2[1])
-								.show();
+						adb.setMessage("Problème lors du choix du contact.");
 					}
+					
+					adb.setPositiveButton("Ok", null).show();
 				} catch (InterruptedException interruptedException) {
 					Log.e("log_tag",
 							"interrupted " + interruptedException.toString());

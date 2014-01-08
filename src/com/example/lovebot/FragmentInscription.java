@@ -62,8 +62,8 @@ public class FragmentInscription extends Fragment {
 							.get();
 					if (token != null) {
 						new AlertDialog.Builder(getActivity())
-								.setTitle("Inscription OK")
-								.setMessage("Reussie!").show();
+								.setMessage("Tu es bien inscrit. Tu peux désormais te connecter.")
+								.setPositiveButton("Ok", null).show();
 
 						FragmentManager fm = getFragmentManager();
 						FragmentTransaction ft = fm.beginTransaction();
@@ -72,8 +72,7 @@ public class FragmentInscription extends Fragment {
 						ft.commit();
 					} else {
 						new AlertDialog.Builder(getActivity())
-								.setTitle("Erreur")
-								.setMessage("Erreur dans l'inscription").show();
+								.setMessage("Login et/ou Mdp incorrect.").show();
 					}
 				} catch (InterruptedException interruptedException) {
 					Log.e("log_tag",

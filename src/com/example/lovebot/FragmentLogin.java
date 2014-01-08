@@ -38,17 +38,18 @@ public class FragmentLogin extends Fragment {
 			}
 		});
 
-		final Button contactsButton = (Button) v
-				.findViewById(R.id.buttonCo);
-		
+		final Button contactsButton = (Button) v.findViewById(R.id.buttonCo);
+
 		contactsButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+
 				// on récupere les infos entrées et on cast en String
-				String num = ((EditText) getView().findViewById(R.id.login_co)).getText().toString();
-				String passwd = ((EditText) getView().findViewById(R.id.passwd_co)).getText().toString();
-				
+				String num = ((EditText) getView().findViewById(R.id.login_co))
+						.getText().toString();
+				String passwd = ((EditText) getView().findViewById(
+						R.id.passwd_co)).getText().toString();
+
 				// on appelle LoginService
 				LoginService loginService = new LoginService();
 				try {
@@ -60,11 +61,9 @@ public class FragmentLogin extends Fragment {
 								ContactsActivity.class);
 						intent.putExtra("key", token);
 						startActivity(intent);
-					}
-					else{
-						new AlertDialog.Builder(getActivity())
-						.setTitle("Erreur")
-						.setMessage("Erreur dans le num / mdp").show();
+					} else {
+						new AlertDialog.Builder(getActivity()).setMessage(
+								"Identifiants incorrects.").show();
 					}
 				} catch (InterruptedException interruptedException) {
 					Log.e("log_tag",
