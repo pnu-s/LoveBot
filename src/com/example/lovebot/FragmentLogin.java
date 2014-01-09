@@ -1,6 +1,11 @@
 package com.example.lovebot;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Formatter;
 import java.util.concurrent.ExecutionException;
+
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -51,20 +56,23 @@ public class FragmentLogin extends Fragment {
 						R.id.passwd_co)).getText().toString();
 				// on appelle LoginService
 				LoginService loginService = new LoginService();
+				//passwd = encryptPassword(passwd);
 				try {
 					// on recupere le token synonyme de bonne connexion
 					
-					String token = (String) loginService.execute(num, passwd).get();					
-					if (token != null && !token.equals("1")) {
-						// si il y en a un on va dans l'activité contacts
-						Intent intent = new Intent(getActivity(),
-								ContactsActivity.class);
-						intent.putExtra("key", token);
-						startActivity(intent);
-					} else if (token.equals("1")) {
-						Intent intent2 = new Intent(getActivity(),
-								SuccessActivity.class);
-						startActivity(intent2);
+					String token = (String) loginService.execute(num, passwd).get();
+					if (token != null )  {
+						if (!token.equals("1")) {
+							Intent intent = new Intent(getActivity(),
+									ContactsActivity.class);
+							intent.putExtra("key", token);
+							startActivity(intent);
+						}
+						else {
+							Intent intent2 = new Intent(getActivity(),
+									SuccessActivity.class);
+							startActivity(intent2);
+						}	
 					} else {
 						new AlertDialog.Builder(getActivity()).setMessage(
 								"Identifiants incorrects.").show();
@@ -83,5 +91,38 @@ public class FragmentLogin extends Fragment {
 		});
 
 		return v;
+	}
+	
+	private static String encryptPassword(String password)
+	{
+	    String sha1 = "";
+	    try
+	    {
+	        MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+	        crypt.reset();
+	        crypt.update(password.getBytes("UTF-8"));
+	        sha1 = byteToHex(crypt.digest());
+	    }
+	    catch(NoSuchAlgorithmException e)
+	    {
+	        e.printStackTrace();
+	    }
+	    catch(UnsupportedEncodingException e)
+	    {
+	        e.printStackTrace();
+	    }
+	    return sha1;
+	}
+
+	private static String byteToHex(final byte[] hash)
+	{
+	    Formatter formatter = new Formatter();
+	    for (byte b : hash)
+	    {
+	        formatter.format("%02x", b);
+	    }
+	    String result = formatter.toString();
+	    formatter.close();
+	    return result;
 	}
 }
