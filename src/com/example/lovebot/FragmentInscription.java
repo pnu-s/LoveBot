@@ -57,39 +57,47 @@ public class FragmentInscription extends Fragment {
 						.getText().toString();
 				String passwd = ((EditText) getView().findViewById(
 						R.id.editText2)).getText().toString();
-				passwd=encryptPassword(passwd);
 
-				// on appelle inscriptionService
-				InscriptionService inscriptionService = new InscriptionService();
-				try {
-					// on recupere le token synonyme d'inscription réussie
-					String token = inscriptionService.execute(num, passwd)
-							.get();
-					if (token != null) {
-						new AlertDialog.Builder(getActivity())
-								.setMessage("Tu es bien inscrit. Tu peux désormais te connecter.")
-								.setPositiveButton("Ok", null).show();
-
-						FragmentManager fm = getFragmentManager();
-						FragmentTransaction ft = fm.beginTransaction();
-						FragmentLogin fi = new FragmentLogin();
-						ft.replace(R.id.fragmentContainer, fi);
-						ft.commit();
-					} else {
-						System.out.println(passwd);
-						new AlertDialog.Builder(getActivity())
-								.setMessage("Login et/ou Mdp incorrect.").show();
+				//if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,20}$/', $parameters[":password"]))
+				final String regexp = "(?=.*\\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%].{5,20}";
+		        if (passwd.matches(regexp)) {
+					passwd=encryptPassword(passwd);
+			        				// on appelle inscriptionService
+					InscriptionService inscriptionService = new InscriptionService();
+					try {
+						// on recupere le token synonyme d'inscription réussie
+						String token = inscriptionService.execute(num, passwd)
+								.get();
+						if (token != null) {
+							new AlertDialog.Builder(getActivity())
+									.setMessage("Tu es bien inscrit. Tu peux désormais te connecter.")
+									.setPositiveButton("Ok", null).show();
+	
+							FragmentManager fm = getFragmentManager();
+							FragmentTransaction ft = fm.beginTransaction();
+							FragmentLogin fi = new FragmentLogin();
+							ft.replace(R.id.fragmentContainer, fi);
+							ft.commit();
+						} else {
+							System.out.println(passwd);
+							new AlertDialog.Builder(getActivity())
+									.setMessage("Login et/ou Mdp incorrect.").show();
+						}
+					} catch (InterruptedException interruptedException) {
+						Log.e("log_tag",
+								"interrupted " + interruptedException.toString());
+					} catch (ExecutionException executionException) {
+						Log.e("log_tag",
+								"execution" + executionException.toString());
+					} catch (NullPointerException nullPointerException) {
+						Log.e("log_tag",
+								"nullpointer " + nullPointerException.toString());
 					}
-				} catch (InterruptedException interruptedException) {
-					Log.e("log_tag",
-							"interrupted " + interruptedException.toString());
-				} catch (ExecutionException executionException) {
-					Log.e("log_tag",
-							"execution" + executionException.toString());
-				} catch (NullPointerException nullPointerException) {
-					Log.e("log_tag",
-							"nullpointer " + nullPointerException.toString());
-				}
+		        }
+		        else {
+		        	new AlertDialog.Builder(getActivity())
+					.setMessage("MdP doit avoir au moins 1 chiffre, et un caractère alphabétique et fasse au moins 5 caractères.").show();
+		        }
 			}
 		});
 
