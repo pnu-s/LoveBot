@@ -81,7 +81,7 @@ public class FragmentInscription extends Fragment {
 						} else {
 							System.out.println(passwd);
 							new AlertDialog.Builder(getActivity())
-									.setMessage("Login et/ou Mdp incorrect.").show();
+									.setMessage("Identifiant déjà utilisé!").show();
 						}
 					} catch (InterruptedException interruptedException) {
 						Log.e("log_tag",
@@ -96,7 +96,7 @@ public class FragmentInscription extends Fragment {
 		        }
 		        else {
 		        	new AlertDialog.Builder(getActivity())
-					.setMessage("MdP doit avoir au moins 1 chiffre, et un caractère alphabétique et fasse au moins 5 caractères.").show();
+					.setMessage("Mot de passe de 5 caractères minimum dont au moins 1 lettre et 1 chiffre").show();
 		        }
 			}
 		});
