@@ -18,28 +18,34 @@
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
             android:name="com.example.lovebot.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            
         </activity>
         <activity
             android:name="com.example.lovebot.FragmentInscription"
-            android:label="@string/title_activity_fragment_inscription" >
+            android:label="@string/title_activity_fragment_inscription" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.lovebot.ContactsActivity"
-            android:label="@string/title_activity_contacts" >
+            android:label="@string/title_activity_contacts"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.lovebot.FragmentLogin"
-            android:label="@string/title_activity_fragment_login" >
+            android:label="@string/title_activity_fragment_login" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.example.lovebot.SuccessActivity"
-            android:label="@string/title_activity_success" >
+            android:label="@string/title_activity_success" 
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

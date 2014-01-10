@@ -56,7 +56,7 @@ public class FragmentLogin extends Fragment {
 						R.id.passwd_co)).getText().toString();
 				// on appelle LoginService
 				LoginService loginService = new LoginService();
-				//passwd = encryptPassword(passwd);
+				passwd = encryptPassword(passwd);
 				try {
 					// on recupere le token synonyme de bonne connexion
 					

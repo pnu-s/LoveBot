@@ -57,7 +57,7 @@ public class FragmentInscription extends Fragment {
 						.getText().toString();
 				String passwd = ((EditText) getView().findViewById(
 						R.id.editText2)).getText().toString();
-				//passwd=encryptPassword(passwd);
+				passwd=encryptPassword(passwd);
 
 				// on appelle inscriptionService
 				InscriptionService inscriptionService = new InscriptionService();
@@ -76,6 +76,7 @@ public class FragmentInscription extends Fragment {
 						ft.replace(R.id.fragmentContainer, fi);
 						ft.commit();
 					} else {
+						System.out.println(passwd);
 						new AlertDialog.Builder(getActivity())
 								.setMessage("Login et/ou Mdp incorrect.").show();
 					}
