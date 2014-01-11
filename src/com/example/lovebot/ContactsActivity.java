@@ -83,13 +83,13 @@ public class ContactsActivity extends Activity {
 								AmourService amourService = new AmourService();
 								try {
 									// on recupere le token synonyme de liaison réussie
-									String token = amourService.execute(user1, user2[1]).get();
-									String msg = "Default";
+									String msg = amourService.execute(user1, user2[1]).get();
+									/*String msg = "Default";
 									if (token != null) {
 										msg = token;
 									} else {
 										msg = "Problème lors du choix du contact.";
-									}
+									}*/
 
 									Toast toast = Toast.makeText(v.getContext(), msg, 20);
 									toast.show();
