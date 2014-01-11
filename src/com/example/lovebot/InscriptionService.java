@@ -3,7 +3,6 @@ package com.example.lovebot;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -15,9 +14,9 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.os.AsyncTask;
 import android.util.Log;
+import com.example.lovebot.constant.ServiceConstants;
 
 public class InscriptionService extends AsyncTask<String, Void, String>
 {
@@ -29,7 +28,7 @@ public class InscriptionService extends AsyncTask<String, Void, String>
         String password = params[1];
         
         //uri en clair
-        String uri = "http://lovebot.byethost17.com/inscription.php";
+        String uri = ServiceConstants.INSCRIPTION;
         
         // Query string
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();

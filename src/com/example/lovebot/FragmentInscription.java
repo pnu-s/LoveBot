@@ -59,7 +59,7 @@ public class FragmentInscription extends Fragment {
 						R.id.editText2)).getText().toString();
 
 				//if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,20}$/', $parameters[":password"]))
-				final String regexp = "(?=.*\\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%].{5,20}";
+				final String regexp = "(?=.*\\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%].{4,20}";
 		        if (passwd.matches(regexp)) {
 					passwd=encryptPassword(passwd);
 			        				// on appelle inscriptionService
