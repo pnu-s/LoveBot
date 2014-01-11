@@ -1,8 +1,9 @@
-package com.example.lovebot;
+package main.activity;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
+import main.service.AmourService;
+import com.example.lovebot.R;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.app.Activity;
@@ -91,7 +92,7 @@ public class ContactsActivity extends Activity {
 										msg = "Problème lors du choix du contact.";
 									}
 
-									Toast toast = Toast.makeText(v.getContext(), msg, 20);
+									Toast toast = Toast.makeText(v.getContext(), msg, Toast.LENGTH_LONG);
 									toast.show();
 								} catch (InterruptedException interruptedException) {
 									Log.e("log_tag",

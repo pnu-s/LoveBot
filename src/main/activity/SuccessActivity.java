@@ -1,4 +1,6 @@
-package com.example.lovebot;
+package main.activity;
+
+import com.example.lovebot.R;
 
 import android.os.Bundle;
 import android.app.Activity;

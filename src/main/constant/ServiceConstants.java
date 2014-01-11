@@ -1,4 +1,4 @@
-package com.example.lovebot.constant;
+package main.constant;
 
 public class ServiceConstants {
 

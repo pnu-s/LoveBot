@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="com.example.lovebot.MainActivity"
+            android:name="main.activity.MainActivity"
             android:label="@string/app_name" 
             android:screenOrientation="portrait">
             <intent-filter>
@@ -28,22 +28,22 @@
             
         </activity>
         <activity
-            android:name="com.example.lovebot.FragmentInscription"
+            android:name="main.fragment.FragmentInscription"
             android:label="@string/title_activity_fragment_inscription" 
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.example.lovebot.ContactsActivity"
+            android:name="main.activity.ContactsActivity"
             android:label="@string/title_activity_contacts"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.example.lovebot.FragmentLogin"
+            android:name="main.fragment.FragmentLogin"
             android:label="@string/title_activity_fragment_login" 
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.example.lovebot.SuccessActivity"
+            android:name="main.activity.SuccessActivity"
             android:label="@string/title_activity_success" 
             android:screenOrientation="portrait">
         </activity>

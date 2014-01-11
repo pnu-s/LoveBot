@@ -1,8 +1,11 @@
-package com.example.lovebot;
+package main.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import main.constant.ServiceConstants;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -14,10 +17,9 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.example.lovebot.constant.ServiceConstants;
 
 public class AmourService extends AsyncTask<String, Void, String>
 {
