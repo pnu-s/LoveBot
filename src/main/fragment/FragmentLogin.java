@@ -36,7 +36,7 @@ public class FragmentLogin extends Fragment {
 				false);
 		final Button btnInscription = (Button) v
 				.findViewById(R.id.buttonInscription);
-
+		// envoyer sur le fragment inscription
 		btnInscription.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

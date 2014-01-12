@@ -58,11 +58,12 @@ public class FragmentInscription extends Fragment {
 				String passwd = ((EditText) getView().findViewById(
 						R.id.editText2)).getText().toString();
 
-				//if(preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{5,20}$/', $parameters[":password"]))
+				//regEx pour verifier que le mot de passe est du bon format
 				final String regexp = "(?=.*\\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%].{4,20}";
 		        if (passwd.matches(regexp)) {
+		        	//si c'est bon, on crypte le mdp
 					passwd=encryptPassword(passwd);
-			        				// on appelle inscriptionService
+					// on appelle inscriptionService
 					InscriptionService inscriptionService = new InscriptionService();
 					try {
 						// on recupere le token synonyme d'inscription réussie
@@ -70,7 +71,7 @@ public class FragmentInscription extends Fragment {
 								.get();
 						if (token != null) {
 							new AlertDialog.Builder(getActivity())
-									.setMessage("Tu es bien inscrit. Tu peux désormais te connecter.")
+									.setMessage("Tu es bien inscrit. Tu peux désormais te connecter !")
 									.setPositiveButton("Ok", null).show();
 	
 							FragmentManager fm = getFragmentManager();
@@ -79,6 +80,7 @@ public class FragmentInscription extends Fragment {
 							ft.replace(R.id.fragmentContainer, fi);
 							ft.commit();
 						} else {
+							//sinon ça signifie qu'il y a déjà un compte avec ce numéro
 							System.out.println(passwd);
 							new AlertDialog.Builder(getActivity())
 									.setMessage("Identifiant déjà utilisé!").show();
@@ -111,6 +113,7 @@ public class FragmentInscription extends Fragment {
 	        MessageDigest crypt = MessageDigest.getInstance("SHA-1");
 	        crypt.reset();
 	        crypt.update(password.getBytes("UTF-8"));
+	        //on coverti le MessageDigest en String
 	        sha1 = byteToHex(crypt.digest());
 	    }
 	    catch(NoSuchAlgorithmException e)

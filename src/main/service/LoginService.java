@@ -30,7 +30,7 @@ public class LoginService extends AsyncTask<String, Void, String>
         String numero = params[0];
         String password = params[1];
         
-        //uri en clair
+        //url
         String uri = ServiceConstants.LOGIN;
         
         // Query string
@@ -54,17 +54,17 @@ public class LoginService extends AsyncTask<String, Void, String>
         catch(JSONException jsonException)
         {
         	Log.e("log_tag",
-					"jSONException " + jsonException.toString());
+					"jSON " + jsonException.toString());
         }
         catch(ClientProtocolException clientProtocolException)
         {
         	Log.e("log_tag",
-					"ClientProtocolException " + clientProtocolException.toString());
+					"ClientProtocol " + clientProtocolException.toString());
         }
         catch(IOException ioException)
         {
         	Log.e("log_tag",
-					"IOException " + ioException.toString());
+					"IO " + ioException.toString());
         }
         return null;
     }

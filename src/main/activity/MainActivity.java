@@ -19,9 +19,9 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		final LinearLayout title = (LinearLayout) findViewById(R.id.title);
-		//final ImageView coeur = (ImageView) findViewById(R.id.imageView1);
 		title.setOnClickListener(new OnClickListener() {
 			@Override
+			// afficher auteurs sur toute la longueur du title
 			public void onClick(View v) {
 				new AlertDialog.Builder(v.getContext()).setTitle("Auteurs")
 				.setMessage("S. Pruneau & H. Burlini").setPositiveButton("Ok", null).show();
@@ -37,7 +37,6 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
