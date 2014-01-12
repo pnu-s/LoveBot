@@ -26,11 +26,10 @@ public class AmourService extends AsyncTask<String, Void, String>
     @Override
     protected String doInBackground(String... params)
     {
-    	//on recup les param
+    	// Récupération des paramètres
         String user1 = params[0];
         String user2 = params[1];
         
-        //url
         String uri = ServiceConstants.AMOUR;
         
         // Query string
@@ -38,7 +37,7 @@ public class AmourService extends AsyncTask<String, Void, String>
         nameValuePairs.add(new BasicNameValuePair("user1", user1));
         nameValuePairs.add(new BasicNameValuePair("user2", user2));
         
-        // important : ajout des paramètres dans l'url
+        // Ajout des paramètres dans l'URL
         uri += "?" + URLEncodedUtils.format(nameValuePairs, "utf-8");
         
         HttpGet httpGet = new HttpGet(uri);
@@ -47,7 +46,8 @@ public class AmourService extends AsyncTask<String, Void, String>
         {
             HttpResponse httpResponse = defaultHttpClient.execute(httpGet, new BasicHttpContext());
             String response = EntityUtils.toString(httpResponse.getEntity());
-            //on recupere la réponse en JSON
+            
+            // Récupération de la réponse JSON
             JSONObject jsonObject = new JSONObject(response);
             return jsonObject.getString("token");
 

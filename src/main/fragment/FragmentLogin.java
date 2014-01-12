@@ -36,7 +36,9 @@ public class FragmentLogin extends Fragment {
 				false);
 		final Button btnInscription = (Button) v
 				.findViewById(R.id.buttonInscription);
-		// envoyer sur le fragment inscription
+		final Button btnConnexion = (Button) v.findViewById(R.id.buttonCo);
+
+		// Fonction qui permet d'accéder au formulaire d'inscription
 		btnInscription.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -49,36 +51,42 @@ public class FragmentLogin extends Fragment {
 			}
 		});
 
-		final Button contactsButton = (Button) v.findViewById(R.id.buttonCo);
-
-		contactsButton.setOnClickListener(new OnClickListener() {
+		// Fonction qui permet la connexion à l'application
+		btnConnexion.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-				// on récupere les infos entrées et on cast en String
+				// Récupération des infos entrées en String
 				String num = ((EditText) getView().findViewById(R.id.login_co))
 						.getText().toString();
 				String passwd = ((EditText) getView().findViewById(
 						R.id.passwd_co)).getText().toString();
-				// on appelle LoginService
-				LoginService loginService = new LoginService();
+
+				// Chiffrement du mot de passe
 				passwd = encryptPassword(passwd);
+
+				// Appel de LoginService
+				LoginService loginService = new LoginService();
 				try {
-					// on recupere le token synonyme de bonne connexion
 					
-					String token = (String) loginService.execute(num, passwd).get();
-					if (token != null )  {
+					// Récupération du token synonyme d'inscription réussie
+					String token = (String) loginService.execute(num, passwd)
+							.get();
+					
+					if (token != null) {
+						// Si l'utilisateur n'est pas déja dans une relation
 						if (!token.equals("1")) {
 							Intent intent = new Intent(getActivity(),
 									ContactsActivity.class);
 							intent.putExtra("key", token);
 							startActivity(intent);
-						}
-						else {
+							
+						//Sinon accès à la page de "succès"
+						} else {
 							Intent intent2 = new Intent(getActivity(),
 									SuccessActivity.class);
 							startActivity(intent2);
-						}	
+						}
 					} else {
 						new AlertDialog.Builder(getActivity()).setMessage(
 								"Identifiants incorrects.").show();
@@ -98,37 +106,31 @@ public class FragmentLogin extends Fragment {
 
 		return v;
 	}
-	
-	private static String encryptPassword(String password)
-	{
-	    String sha1 = "";
-	    try
-	    {
-	        MessageDigest crypt = MessageDigest.getInstance("SHA-1");
-	        crypt.reset();
-	        crypt.update(password.getBytes("UTF-8"));
-	        sha1 = byteToHex(crypt.digest());
-	    }
-	    catch(NoSuchAlgorithmException e)
-	    {
-	        e.printStackTrace();
-	    }
-	    catch(UnsupportedEncodingException e)
-	    {
-	        e.printStackTrace();
-	    }
-	    return sha1;
+
+	// Fonction permettant le chiffrement du mdp sur le client
+	private static String encryptPassword(String password) {
+		String sha1 = "";
+		try {
+			MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+			crypt.reset();
+			crypt.update(password.getBytes("UTF-8"));
+			sha1 = byteToString(crypt.digest());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return sha1;
 	}
 
-	private static String byteToHex(final byte[] hash)
-	{
-	    Formatter formatter = new Formatter();
-	    for (byte b : hash)
-	    {
-	        formatter.format("%02x", b);
-	    }
-	    String result = formatter.toString();
-	    formatter.close();
-	    return result;
+	private static String byteToString(final byte[] hash) {
+		Formatter formatter = new Formatter();
+		for (byte b : hash) {
+			formatter.format("%02x", b);
+		}
+		String result = formatter.toString();
+		formatter.close();
+		return result;
 	}
+
 }

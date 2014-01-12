@@ -18,16 +18,20 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		// Récupération de la ligne de titre
 		final LinearLayout title = (LinearLayout) findViewById(R.id.title);
+		
+		// Fonction affichant les auteurs de l'application
 		title.setOnClickListener(new OnClickListener() {
 			@Override
-			// afficher auteurs sur toute la longueur du title
 			public void onClick(View v) {
 				new AlertDialog.Builder(v.getContext()).setTitle("Auteurs")
 				.setMessage("S. Pruneau & H. Burlini").setPositiveButton("Ok", null).show();
 			}
 		});
 		
+		// Démarrage du fragment dédié à la connexion
 		FragmentManager fm = getFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		FragmentLogin fl = new FragmentLogin();

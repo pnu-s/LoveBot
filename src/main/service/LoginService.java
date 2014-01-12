@@ -26,11 +26,10 @@ public class LoginService extends AsyncTask<String, Void, String>
     @Override
     protected String doInBackground(String... params)
     {
-    	//on recup les param
+    	// Récupération des paramètres
         String numero = params[0];
         String password = params[1];
         
-        //url
         String uri = ServiceConstants.LOGIN;
         
         // Query string
@@ -38,7 +37,7 @@ public class LoginService extends AsyncTask<String, Void, String>
         nameValuePairs.add(new BasicNameValuePair("numero", numero));
         nameValuePairs.add(new BasicNameValuePair("password", password));
         
-        // important : ajout des paramètres dans l'url
+        // Ajout des paramètres dans l'URL
         uri += "?" + URLEncodedUtils.format(nameValuePairs, "utf-8");
         
         HttpGet httpGet = new HttpGet(uri);
@@ -47,7 +46,8 @@ public class LoginService extends AsyncTask<String, Void, String>
         {
             HttpResponse httpResponse = defaultHttpClient.execute(httpGet, new BasicHttpContext());
             String response = EntityUtils.toString(httpResponse.getEntity());
-            //on recupere la réponse en JSON
+            
+            // Récupération de la réponse JSON
             JSONObject jsonObject = new JSONObject(response);
             return jsonObject.getString("token");
         }
