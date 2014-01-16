@@ -1,9 +1,13 @@
 package main.activity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
+
 import main.service.AmourService;
+
 import com.example.lovebot.R;
+
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.app.Activity;
@@ -65,6 +69,9 @@ public class ContactsActivity extends Activity {
 		}
 		phones.close();
 
+		// Tri de la liste
+		Collections.sort(list);
+		
 		// Adaptation de l'ArrayList à la ListView
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, list);
