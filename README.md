@@ -14,6 +14,6 @@ Fonctionnalités mises en place :
 
 Fonctionnalités prévues :
 
-* Système de notifications
+* Système de notifications avec GCM
 * Connection au serveur en https
 * Ajout d'encarts publicitaires
