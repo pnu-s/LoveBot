@@ -16,4 +16,5 @@ Fonctionnalités prévues :
 
 * Système de notifications avec GCM
 * Connection au serveur en https
+* Visuel pour l'attente lors des requêtes réseau
 * Ajout d'encarts publicitaires
