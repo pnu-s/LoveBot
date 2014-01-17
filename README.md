@@ -15,6 +15,7 @@ Fonctionnalités mises en place :
 Fonctionnalités prévues :
 
 * Système de notifications avec GCM
+* Possibilité de changer son choix
 * Connection au serveur en https
 * Visuel pour l'attente lors des requêtes réseau
 * Ajout d'encarts publicitaires
