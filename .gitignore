@@ -1,2 +1,5 @@
 /bin
 /gen
+/proguard-project.txt
+/project.properties
+/libs
